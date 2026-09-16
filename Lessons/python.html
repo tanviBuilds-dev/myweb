@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python for Beginners - Full Lecture</title>
+    <style>
+        :root {
+            --blue: #1565c0;
+            --blue-dark: #0d47a1;
+            --blue-light: #e3f2fd;
+            --blue-pale: #f5faff;
+            --text: #18324b;
+            --muted: #5d7185;
+            --white: #fff;
+            --border: #cfe3f7;
+            --code: #0b1f33;
+            --shadow: 0 8px 24px rgba(13, 71, 161, .10);
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, Segoe UI, Arial, sans-serif;
+            color: var(--text);
+            background: var(--blue-pale);
+            line-height: 1.65;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0d47a1, #1976d2, #42a5f5);
+            color: white;
+            padding: 52px 20px 45px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: clamp(2rem, 5vw, 3.5rem)
+        }
+
+        header p {
+            margin: 10px auto 0;
+            max-width: 760px;
+            font-size: 1.08rem;
+            opacity: .95
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, .16);
+            border: 1px solid rgba(255, 255, 255, .35);
+            padding: 6px 14px;
+            border-radius: 999px;
+            margin-bottom: 16px;
+            font-size: .9rem
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 28px 18px 60px
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: white;
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, .06);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: auto;
+            padding: 10px 18px;
+            display: flex;
+            gap: 8px;
+            overflow-x: auto
+        }
+
+        nav a {
+            color: var(--blue-dark);
+            text-decoration: none;
+            font-weight: 600;
+            white-space: nowrap;
+            padding: 7px 10px;
+            border-radius: 8px
+        }
+
+        nav a:hover {
+            background: var(--blue-light)
+        }
+
+        nav a.nav-home-btn {
+            background: var(--blue-dark);
+            color: white !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 14px;
+            border-radius: 8px;
+            transition: background 0.15s ease;
+        }
+
+        nav a.nav-home-btn:hover {
+            background: var(--blue);
+            color: white !important;
+        }
+
+        .nav-divider {
+            display: inline-block;
+            width: 1px;
+            height: 24px;
+            background: var(--border);
+            margin: 4px 4px;
+            vertical-align: middle;
+        }
+
+        .header-back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: white;
+            text-decoration: none;
+            background: rgba(255, 255, 255, .16);
+            border: 1px solid rgba(255, 255, 255, .35);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: .88rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            transition: background .15s ease;
+        }
+
+        .header-back-link:hover {
+            background: rgba(255, 255, 255, .28);
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0;
+            box-shadow: var(--shadow)
+        }
+
+        h2 {
+            color: var(--blue-dark);
+            font-size: 1.7rem;
+            margin: 0 0 16px;
+            padding-bottom: 9px;
+            border-bottom: 3px solid var(--blue-light)
+        }
+
+        h3 {
+            color: var(--blue);
+            margin-top: 22px
+        }
+
+        h4 {
+            color: var(--blue-dark)
+        }
+
+        .tip,
+        .important,
+        .example {
+            border-left: 5px solid var(--blue);
+            background: var(--blue-light);
+            padding: 14px 16px;
+            margin: 16px 0;
+            border-radius: 8px
+        }
+
+        .important {
+            border-left-color: #0d47a1
+        }
+
+        .example {
+            border-left-color: #42a5f5
+        }
+
+        code {
+            background: #eaf4ff;
+            color: #0d47a1;
+            padding: 2px 6px;
+            border-radius: 5px
+        }
+
+        pre {
+            background: var(--code);
+            color: #e8f4ff;
+            padding: 18px;
+            border-radius: 10px;
+            overflow: auto;
+            line-height: 1.5;
+            border: 1px solid #173d5d
+        }
+
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0;
+            background: white
+        }
+
+        th,
+        td {
+            border: 1px solid var(--border);
+            padding: 10px;
+            text-align: left
+        }
+
+        th {
+            background: var(--blue);
+            color: white
+        }
+
+        tr:nth-child(even) {
+            background: #f7fbff
+        }
+
+        ul,
+        ol {
+            padding-left: 25px
+        }
+
+        .checklist li {
+            margin: 7px 0
+        }
+
+        .question {
+            background: #f8fbff;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin: 9px 0
+        }
+
+        .two {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px
+        }
+
+        .three {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px
+        }
+
+        .mini {
+            background: linear-gradient(180deg, #fff, #f2f8ff);
+            border: 1px solid var(--border);
+            padding: 17px;
+            border-radius: 12px
+        }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            padding: 30px
+        }
+
+        .small {
+            color: var(--muted);
+            font-size: .92rem
+        }
+
+        .highlight {
+            color: var(--blue-dark);
+            font-weight: 700
+        }
+
+        @media(max-width:720px) {
+
+            .two,
+            .three {
+                grid-template-columns: 1fr
+            }
+
+            .card {
+                padding: 18px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <a href="../index.html" class="header-back-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to CodePath Hub
+            </a>
+        </div>
+        <div class="badge">🐍 Beginner Friendly • Blue Theme</div>
+        <h1>Python for Beginners</h1>
+        <p>A complete, easy-to-study lecture from your first <b>print()</b> statement to functions, collections,
+            modules, exceptions and mini projects.</p>
+    </header>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-home-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                CodePath Hub
+            </a>
+            <span class="nav-divider"></span>
+            <a href="#start">Start</a><a href="#syntax">Syntax</a><a href="#variables">Variables</a>
+            <a href="#input">Input</a><a href="#operators">Operators</a><a href="#conditions">Conditions</a>
+            <a href="#loops">Loops</a><a href="#strings">Strings</a><a href="#collections">Collections</a>
+            <a href="#functions">Functions</a><a href="#errors">Errors</a><a href="#modules">Modules</a>
+            <a href="#practice">Practice</a>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <section id="start" class="card">
+            <h2>🔵 1. Introduction to Python</h2>
+            <p><b>Python</b> is a high-level, general-purpose programming language known for readable syntax and a large
+                ecosystem of libraries.</p>
+            <h3>Where is Python used?</h3>
+            <div class="three">
+                <div class="mini">🌐 <b>Web Development</b><br>Build websites and web applications.</div>
+                <div class="mini">🤖 <b>AI & Machine Learning</b><br>Work with intelligent systems and models.</div>
+                <div class="mini">📊 <b>Data Science</b><br>Analyze and visualize data.</div>
+                <div class="mini">⚙️ <b>Automation</b><br>Automate repetitive tasks.</div>
+                <div class="mini">🔐 <b>Cybersecurity</b><br>Write tools and scripts for security work.</div>
+                <div class="mini">🎮 <b>Games & Apps</b><br>Create programs and prototypes.</div>
+            </div>
+            <h3>Why is Python beginner-friendly?</h3>
+            <ul class="checklist">
+                <li>Simple and readable syntax.</li>
+                <li>Large collection of built-in functions and libraries.</li>
+                <li>Works on Windows, macOS and Linux.</li>
+                <li>Large developer community and learning resources.</li>
+                <li>Supports procedural, object-oriented and other programming styles.</li>
+            </ul>
+            <div class="tip"><b>Study tip:</b> Don't try to memorize Python. Understand a concept, type the code
+                yourself, change it, and observe the output.</div>
+        </section>
+
+        <section id="syntax" class="card">
+            <h2>🔵 2. Python Syntax & Your First Program</h2>
+            <p>Syntax means the rules for writing valid code.</p>
+            <pre><code>print("Hello, World!")</code></pre>
+            <p><b>Output:</b></p>
+            <pre><code>Hello, World!</code></pre>
+            <h3>print()</h3>
+            <p><code>print()</code> displays information on the screen.</p>
+            <pre><code>print("Hello")
+print("Welcome to Python")
+print(10)</code></pre>
+            <h3>Comments</h3>
+            <p>Comments explain code and are ignored during normal execution.</p>
+            <pre><code># This is a single-line comment
+print("Python")</code></pre>
+            <div class="important"><b>Important:</b> Python uses indentation (spaces at the beginning of a line) to
+                define code blocks. Be consistent, commonly using 4 spaces.</div>
+        </section>
+
+        <section id="variables" class="card">
+            <h2>🔵 3. Variables & Data Types</h2>
+            <p>A <b>variable</b> is a name that refers to a value.</p>
+            <pre><code>name = "Tanvi"
+age = 20
+marks = 87.5
+is_student = True
+
+print(name)
+print(age)</code></pre>
+            <h3>Basic data types</h3>
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Example</th>
+                    <th>Meaning</th>
+                </tr>
+                <tr>
+                    <td>int</td>
+                    <td><code>20</code></td>
+                    <td>Whole number</td>
+                </tr>
+                <tr>
+                    <td>float</td>
+                    <td><code>87.5</code></td>
+                    <td>Decimal number</td>
+                </tr>
+                <tr>
+                    <td>str</td>
+                    <td><code>"Python"</code></td>
+                    <td>Text</td>
+                </tr>
+                <tr>
+                    <td>bool</td>
+                    <td><code>True</code></td>
+                    <td>True/False value</td>
+                </tr>
+                <tr>
+                    <td>NoneType</td>
+                    <td><code>None</code></td>
+                    <td>No value / absence of a value</td>
+                </tr>
+            </table>
+            <h3>Checking a type</h3>
+            <pre><code>x = 25
+print(type(x))</code></pre>
+            <h3>Variable naming rules</h3>
+            <ul>
+                <li>Can contain letters, numbers and underscores.</li>
+                <li>Cannot begin with a number.</li>
+                <li>Cannot contain spaces.</li>
+                <li>Cannot use Python keywords such as <code>if</code>, <code>for</code> or <code>class</code>.</li>
+                <li>Names are case-sensitive: <code>age</code> and <code>Age</code> are different.</li>
+            </ul>
+            <div class="example"><b>Good:</b> <code>student_name</code>, <code>age2</code>, <code>total_marks</code><br>
+                <b>Bad:</b> <code>2age</code>, <code>student name</code>
+            </div>
+        </section>
+
+        <section id="input" class="card">
+            <h2>🔵 4. Taking Input & Type Conversion</h2>
+            <p>The <code>input()</code> function takes input from the user. It returns text (a string).</p>
+            <pre><code>name = input("Enter your name: ")
+print("Hello", name)</code></pre>
+            <h3>Taking numbers</h3>
+            <pre><code>age = int(input("Enter your age: "))
+height = float(input("Enter your height: "))
+
+print(age)
+print(height)</code></pre>
+            <h3>Type conversion</h3>
+            <table>
+                <tr>
+                    <th>Function</th>
+                    <th>Purpose</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><code>int()</code></td>
+                    <td>Convert to integer</td>
+                    <td><code>int("25")</code></td>
+                </tr>
+                <tr>
+                    <td><code>float()</code></td>
+                    <td>Convert to decimal</td>
+                    <td><code>float("2.5")</code></td>
+                </tr>
+                <tr>
+                    <td><code>str()</code></td>
+                    <td>Convert to string</td>
+                    <td><code>str(25)</code></td>
+                </tr>
+                <tr>
+                    <td><code>bool()</code></td>
+                    <td>Convert to Boolean</td>
+                    <td><code>bool(1)</code></td>
+                </tr>
+            </table>
+            <div class="important"><b>Common beginner mistake:</b> <code>input()</code> gives a string. So
+                <code>input() + input()</code> joins text instead of doing numeric addition unless you convert the
+                values.</div>
+        </section>
+
+        <section id="operators" class="card">
+            <h2>🔵 5. Operators</h2>
+            <h3>Arithmetic operators</h3>
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Name</th>
+                    <th>Example</th>
+                    <th>Result</th>
+                </tr>
+                <tr>
+                    <td>+</td>
+                    <td>Addition</td>
+                    <td><code>10 + 3</code></td>
+                    <td>13</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>Subtraction</td>
+                    <td><code>10 - 3</code></td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>*</td>
+                    <td>Multiplication</td>
+                    <td><code>10 * 3</code></td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>/</td>
+                    <td>Division</td>
+                    <td><code>10 / 3</code></td>
+                    <td>3.333...</td>
+                </tr>
+                <tr>
+                    <td>//</td>
+                    <td>Floor division</td>
+                    <td><code>10 // 3</code></td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>%</td>
+                    <td>Remainder</td>
+                    <td><code>10 % 3</code></td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>**</td>
+                    <td>Power</td>
+                    <td><code>2 ** 3</code></td>
+                    <td>8</td>
+                </tr>
+            </table>
+            <h3>Comparison operators</h3>
+            <p><code>==</code> equal, <code>!=</code> not equal, <code>&gt;</code> greater, <code>&lt;</code> less,
+                <code>&gt;=</code> greater/equal, <code>&lt;=</code> less/equal.</p>
+            <pre><code>age = 20
+print(age >= 18)   # True
+print(age == 18)   # False</code></pre>
+            <h3>Logical operators</h3>
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Meaning</th>
+                </tr>
+                <tr>
+                    <td><code>and</code></td>
+                    <td>All conditions must be true.</td>
+                </tr>
+                <tr>
+                    <td><code>or</code></td>
+                    <td>At least one condition must be true.</td>
+                </tr>
+                <tr>
+                    <td><code>not</code></td>
+                    <td>Reverses a Boolean result.</td>
+                </tr>
+            </table>
+            <h3>Assignment shortcuts</h3>
+            <pre><code>x = 10
+x += 5   # x becomes 15
+x -= 3   # x becomes 12
+x *= 2   # x becomes 24
+x /= 4   # x becomes 6.0</code></pre>
+        </section>
+
+        <section id="conditions" class="card">
+            <h2>🔵 6. Conditional Statements</h2>
+            <p>Conditions allow a program to make decisions.</p>
+            <h3>if</h3>
+            <pre><code>age = 20
+
+if age >= 18:
+    print("Adult")</code></pre>
+            <h3>if-else</h3>
+            <pre><code>age = 16
+
+if age >= 18:
+    print("Adult")
+else:
+    print("Minor")</code></pre>
+            <h3>if-elif-else</h3>
+            <pre><code>marks = 75
+
+if marks >= 90:
+    print("Grade A")
+elif marks >= 60:
+    print("Grade B")
+elif marks >= 40:
+    print("Grade C")
+else:
+    print("Fail")</code></pre>
+            <div class="tip"><b>Remember:</b> The colon <code>:</code> starts the block, and the indented lines belong
+                to that block.</div>
+        </section>
+
+        <section id="loops" class="card">
+            <h2>🔵 7. Loops</h2>
+            <p>Loops repeat code. Python's main loops are <code>for</code> and <code>while</code>.</p>
+            <h3>for loop</h3>
+            <pre><code>for i in range(1, 6):
+    print(i)</code></pre>
+            <p>Output: <code>1 2 3 4 5</code></p>
+            <h3>Understanding range()</h3>
+            <pre><code>range(stop)
+range(start, stop)
+range(start, stop, step)</code></pre>
+            <p>The <b>stop</b> value is excluded.</p>
+            <pre><code>for i in range(2, 11, 2):
+    print(i)</code></pre>
+            <p>Output: 2, 4, 6, 8, 10</p>
+            <h3>while loop</h3>
+            <pre><code>i = 1
+
+while i <= 5:
+    print(i)
+    i += 1</code></pre>
+            <div class="important"><b>Infinite loop warning:</b> In a <code>while</code> loop, make sure something
+                changes so the condition eventually becomes false.</div>
+            <h3>break</h3>
+            <pre><code>for i in range(1, 10):
+    if i == 5:
+        break
+    print(i)</code></pre>
+            <h3>continue</h3>
+            <pre><code>for i in range(1, 6):
+    if i == 3:
+        continue
+    print(i)</code></pre>
+        </section>
+
+        <section id="strings" class="card">
+            <h2>🔵 8. Strings</h2>
+            <p>A string is text enclosed in quotes.</p>
+            <pre><code>name = "Python"</code></pre>
+            <h3>Indexing</h3>
+            <pre><code>text = "Python"
+
+print(text[0])   # P
+print(text[1])   # y
+print(text[-1])  # n</code></pre>
+            <h3>Slicing</h3>
+            <pre><code>text = "Python"
+
+print(text[0:3])   # Pyt
+print(text[2:])    # thon
+print(text[:4])    # Pyth</code></pre>
+            <h3>Useful string methods</h3>
+            <pre><code>text = "hello python"
+
+print(text.upper())
+print(text.lower())
+print(text.title())
+print(text.replace("python", "world"))
+print(text.split())</code></pre>
+            <h3>f-strings</h3>
+            <p>f-strings are a convenient way to insert variables into text.</p>
+            <pre><code>name = "Tanvi"
+age = 20
+
+print(f"My name is {name} and I am {age} years old.")</code></pre>
+        </section>
+
+        <section id="collections" class="card">
+            <h2>🔵 9. Collections: List, Tuple, Set & Dictionary</h2>
+
+            <h3>List</h3>
+            <p>A list stores multiple values and is mutable (changeable).</p>
+            <pre><code>fruits = ["Apple", "Mango", "Banana"]
+
+print(fruits[0])
+
+fruits.append("Orange")
+fruits.remove("Mango")
+
+print(fruits)</code></pre>
+            <p>Useful methods: <code>append()</code>, <code>remove()</code>, <code>pop()</code>, <code>sort()</code>,
+                <code>reverse()</code>.</p>
+
+            <h3>Tuple</h3>
+            <p>A tuple is an ordered collection that is generally used when values should not be changed.</p>
+            <pre><code>colors = ("Red", "Blue", "Green")
+print(colors[1])</code></pre>
+
+            <h3>Set</h3>
+            <p>A set stores unique values and does not use normal positional indexing.</p>
+            <pre><code>numbers = {1, 2, 2, 3, 4}
+print(numbers)  # duplicate 2 is stored only once</code></pre>
+
+            <h3>Dictionary</h3>
+            <p>A dictionary stores data as <b>key-value pairs</b>.</p>
+            <pre><code>student = {
+    "name": "Tanvi",
+    "age": 20,
+    "course": "BCA"
+}
+
+print(student["name"])
+student["age"] = 21</code></pre>
+
+            <table>
+                <tr>
+                    <th>Collection</th>
+                    <th>Ordered?</th>
+                    <th>Changeable?</th>
+                    <th>Duplicates?</th>
+                </tr>
+                <tr>
+                    <td>List</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Tuple</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Set</td>
+                    <td>No positional indexing</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Dictionary</td>
+                    <td>Insertion order preserved</td>
+                    <td>Yes</td>
+                    <td>Keys are unique</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="functions" class="card">
+            <h2>🔵 10. Functions</h2>
+            <p>A function is a reusable block of code.</p>
+            <h3>Creating a function</h3>
+            <pre><code>def greet():
+    print("Hello!")
+
+greet()</code></pre>
+            <h3>Parameters</h3>
+            <pre><code>def greet(name):
+    print("Hello", name)
+
+greet("Tanvi")</code></pre>
+            <h3>Return value</h3>
+            <pre><code>def add(a, b):
+    return a + b
+
+result = add(10, 20)
+print(result)</code></pre>
+            <h3>Default parameter</h3>
+            <pre><code>def greet(name="Student"):
+    print("Hello", name)
+
+greet()
+greet("Tanvi")</code></pre>
+            <div class="tip"><b>Why use functions?</b> They reduce repetition, organize programs, make code easier to
+                test, and improve readability.</div>
+        </section>
+
+        <section id="errors" class="card">
+            <h2>🔵 11. Errors & Exception Handling</h2>
+            <h3>Common errors</h3>
+            <ul>
+                <li><b>SyntaxError:</b> Code does not follow Python syntax.</li>
+                <li><b>NameError:</b> A variable or name is not defined.</li>
+                <li><b>TypeError:</b> An operation is used with an inappropriate type.</li>
+                <li><b>ValueError:</b> A value has the right general type but an invalid value.</li>
+                <li><b>ZeroDivisionError:</b> Attempting to divide by zero.</li>
+            </ul>
+            <h3>try-except</h3>
+            <pre><code>try:
+    number = int(input("Enter a number: "))
+    print(10 / number)
+except ValueError:
+    print("Please enter a valid integer.")
+except ZeroDivisionError:
+    print("Cannot divide by zero.")</code></pre>
+            <p>Exception handling lets your program respond to expected runtime problems instead of crashing
+                immediately.</p>
+        </section>
+
+        <section id="modules" class="card">
+            <h2>🔵 12. Modules & Libraries</h2>
+            <p>A module is a Python file containing reusable code. Python also provides a large standard library and
+                many third-party packages.</p>
+            <h3>Importing a standard module</h3>
+            <pre><code>import math
+
+print(math.sqrt(25))
+print(math.pi)</code></pre>
+            <h3>Importing a specific item</h3>
+            <pre><code>from math import sqrt
+
+print(sqrt(49))</code></pre>
+            <h3>Random numbers</h3>
+            <pre><code>import random
+
+number = random.randint(1, 10)
+print(number)</code></pre>
+            <div class="important"><b>Don't memorize every library.</b> Learn how to read documentation and find the
+                correct function when you need it.</div>
+        </section>
+
+        <section class="card">
+            <h2>🔵 13. File Handling — Basics</h2>
+            <p>Python can read from and write to files.</p>
+            <h3>Writing a file</h3>
+            <pre><code>with open("notes.txt", "w") as file:
+    file.write("Python is easy to learn.")</code></pre>
+            <h3>Reading a file</h3>
+            <pre><code>with open("notes.txt", "r") as file:
+    content = file.read()
+
+print(content)</code></pre>
+            <p>Common modes: <code>r</code> = read, <code>w</code> = write/replace, <code>a</code> = append.</p>
+        </section>
+
+        <section class="card">
+            <h2>🔵 14. Object-Oriented Programming — First Look</h2>
+            <p>Python supports object-oriented programming (OOP). The basic ideas include classes and objects.</p>
+            <h3>Class and object</h3>
+            <pre><code>class Student:
+    def __init__(self, name):
+        self.name = name
+
+    def introduce(self):
+        print("My name is", self.name)
+
+student1 = Student("Tanvi")
+student1.introduce()</code></pre>
+            <p><code>class</code> defines a blueprint. <code>student1</code> is an object created from that class.
+                <code>__init__()</code> initializes object data.</p>
+        </section>
+
+        <section id="practice" class="card">
+            <h2>🔵 15. Beginner Practice Programs</h2>
+            <h3>Program 1 — Add two numbers</h3>
+            <pre><code>a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+
+print("Sum =", a + b)</code></pre>
+
+            <h3>Program 2 — Even or odd</h3>
+            <pre><code>number = int(input("Enter a number: "))
+
+if number % 2 == 0:
+    print("Even")
+else:
+    print("Odd")</code></pre>
+
+            <h3>Program 3 — Largest of three numbers</h3>
+            <pre><code>a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+c = int(input("Enter third number: "))
+
+if a >= b and a >= c:
+    print("Largest =", a)
+elif b >= a and b >= c:
+    print("Largest =", b)
+else:
+    print("Largest =", c)</code></pre>
+
+            <h3>Program 4 — Multiplication table</h3>
+            <pre><code>number = int(input("Enter a number: "))
+
+for i in range(1, 11):
+    print(number, "x", i, "=", number * i)</code></pre>
+
+            <h3>Program 5 — Factorial</h3>
+            <pre><code>number = int(input("Enter a positive integer: "))
+factorial = 1
+
+for i in range(1, number + 1):
+    factorial *= i
+
+print("Factorial =", factorial)</code></pre>
+
+            <h3>Program 6 — Prime number check</h3>
+            <pre><code>number = int(input("Enter a number: "))
+
+if number < 2:
+    print("Not prime")
+else:
+    is_prime = True
+
+    for i in range(2, int(number ** 0.5) + 1):
+        if number % i == 0:
+            is_prime = False
+            break
+
+    if is_prime:
+        print("Prime")
+    else:
+        print("Not prime")</code></pre>
+        </section>
+
+        <section class="card">
+            <h2>🔵 16. Practice Questions</h2>
+            <div class="two">
+                <div>
+                    <h3>Easy</h3>
+                    <div class="question">1. Print your name, age and course.</div>
+                    <div class="question">2. Take two numbers and display their sum, difference and product.</div>
+                    <div class="question">3. Find the area of a rectangle.</div>
+                    <div class="question">4. Convert Celsius to Fahrenheit.</div>
+                    <div class="question">5. Check whether a number is positive, negative or zero.</div>
+                </div>
+                <div>
+                    <h3>Medium</h3>
+                    <div class="question">6. Find the largest of three numbers.</div>
+                    <div class="question">7. Print numbers from 1 to 100.</div>
+                    <div class="question">8. Print all even numbers from 1 to 50.</div>
+                    <div class="question">9. Find the sum of numbers from 1 to 100.</div>
+                    <div class="question">10. Count the vowels in a string.</div>
+                </div>
+            </div>
+            <h3>Challenge</h3>
+            <div class="question">11. Reverse a string without using a built-in reverse function.</div>
+            <div class="question">12. Check whether a word is a palindrome.</div>
+            <div class="question">13. Find the largest value in a list.</div>
+            <div class="question">14. Count how many times each character appears in a string using a dictionary.</div>
+            <div class="question">15. Create a simple student marks program that calculates total, percentage and grade.
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>🔵 17. Mini Project Ideas</h2>
+            <div class="three">
+                <div class="mini"><b>🧮 Calculator</b><br>Use input, operators and functions.</div>
+                <div class="mini"><b>🎯 Number Guessing Game</b><br>Use random numbers, loops and conditions.</div>
+                <div class="mini"><b>📝 To-Do List</b><br>Use lists and functions; later add file storage.</div>
+                <div class="mini"><b>🎓 Student Grade System</b><br>Use dictionaries, conditions and functions.</div>
+                <div class="mini"><b>🔐 Password Generator</b><br>Practice strings and the random module.</div>
+                <div class="mini"><b>💰 Expense Tracker</b><br>Store expenses and calculate totals.</div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>🔵 18. Quick Revision Sheet</h2>
+            <table>
+                <tr>
+                    <th>Concept</th>
+                    <th>Remember</th>
+                </tr>
+                <tr>
+                    <td>Output</td>
+                    <td><code>print()</code></td>
+                </tr>
+                <tr>
+                    <td>Input</td>
+                    <td><code>input()</code></td>
+                </tr>
+                <tr>
+                    <td>Variable</td>
+                    <td><code>name = "Tanvi"</code></td>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td><code>type(value)</code></td>
+                </tr>
+                <tr>
+                    <td>Condition</td>
+                    <td><code>if / elif / else</code></td>
+                </tr>
+                <tr>
+                    <td>For loop</td>
+                    <td><code>for i in range(...)</code></td>
+                </tr>
+                <tr>
+                    <td>While loop</td>
+                    <td><code>while condition:</code></td>
+                </tr>
+                <tr>
+                    <td>Function</td>
+                    <td><code>def function_name():</code></td>
+                </tr>
+                <tr>
+                    <td>List</td>
+                    <td><code>[1, 2, 3]</code></td>
+                </tr>
+                <tr>
+                    <td>Tuple</td>
+                    <td><code>(1, 2, 3)</code></td>
+                </tr>
+                <tr>
+                    <td>Set</td>
+                    <td><code>{1, 2, 3}</code></td>
+                </tr>
+                <tr>
+                    <td>Dictionary</td>
+                    <td><code>{"name": "Tanvi"}</code></td>
+                </tr>
+                <tr>
+                    <td>Module</td>
+                    <td><code>import module_name</code></td>
+                </tr>
+                <tr>
+                    <td>Exception handling</td>
+                    <td><code>try / except</code></td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="card">
+            <h2>🔵 19. Recommended Study Path</h2>
+            <ol>
+                <li><b>Day 1:</b> Python introduction, syntax, print, comments.</li>
+                <li><b>Day 2:</b> Variables, data types, input and type conversion.</li>
+                <li><b>Day 3:</b> Arithmetic, comparison and logical operators.</li>
+                <li><b>Day 4:</b> if, elif and else + practice programs.</li>
+                <li><b>Day 5:</b> for and while loops + break/continue.</li>
+                <li><b>Day 6:</b> Strings and string methods.</li>
+                <li><b>Day 7:</b> Lists, tuples, sets and dictionaries.</li>
+                <li><b>Day 8:</b> Functions and return values.</li>
+                <li><b>Day 9:</b> Exceptions, modules and file handling basics.</li>
+                <li><b>Day 10:</b> Revision + one mini project.</li>
+            </ol>
+            <div class="tip"><b>Best way to study:</b> Read one section → type the examples yourself → change the values
+                → predict the output → run the program → solve the practice questions without looking at the solution.
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>🔵 Final Python Checklist</h2>
+            <ul class="checklist">
+                <li>☐ I can print output.</li>
+                <li>☐ I understand variables and basic data types.</li>
+                <li>☐ I can take user input.</li>
+                <li>☐ I can convert strings to numbers.</li>
+                <li>☐ I understand arithmetic, comparison and logical operators.</li>
+                <li>☐ I can write if/elif/else statements.</li>
+                <li>☐ I can use for and while loops.</li>
+                <li>☐ I understand strings and indexing.</li>
+                <li>☐ I can work with lists, tuples, sets and dictionaries.</li>
+                <li>☐ I can create and call functions.</li>
+                <li>☐ I understand basic exception handling.</li>
+                <li>☐ I can import and use a module.</li>
+                <li>☐ I can build a small Python project.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p style="margin-bottom: 12px;">
+            <a href="../index.html" style="color: var(--blue); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Return to CodePath All Languages Hub
+            </a>
+        </p>
+        <p><b>🐍 Python for Beginners</b></p>
+        <p class="small">Learn by coding, not just reading. Build small programs and gradually increase the difficulty.
+        </p>
+    </footer>
+
+</body>
+
+</html>

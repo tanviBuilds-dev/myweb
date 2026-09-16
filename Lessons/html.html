@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 for Beginners — Full Comprehensive Lecture</title>
+    <link rel="stylesheet" href="lesson.css">
+    <style>
+        :root {
+            --theme-primary: #e65100;
+            --theme-dark: #bf360c;
+            --theme-light: #fff3e0;
+            --theme-pale: #fffbf7;
+            --border: #ffd8b2;
+            --code-border: #4d2600;
+        }
+
+        header {
+            background: linear-gradient(135deg, #bf360c, #e65100, #ff9800);
+        }
+
+        .tag-pill {
+            display: inline-block;
+            background: #ffe0b2;
+            color: #b73807;
+            font-family: monospace;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-top">
+            <a href="../index.html" class="header-back-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to CodePath Hub
+            </a>
+            <span class="badge">🌐 HTML5 Foundations • Master Class</span>
+        </div>
+        <h1>HTML5 for Beginners</h1>
+        <p>The foundational skeleton of the World Wide Web. Learn how to structure web pages with clean, accessible, and semantic markup from basic tags to modern forms and SEO essentials.</p>
+    </header>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-home-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                CodePath Hub
+            </a>
+            <span class="nav-divider"></span>
+            <a href="#intro">Intro</a>
+            <a href="#boilerplate">Boilerplate</a>
+            <a href="#text">Text &amp; Headings</a>
+            <a href="#media">Images &amp; Media</a>
+            <a href="#links">Links &amp; Nav</a>
+            <a href="#tables">Lists &amp; Tables</a>
+            <a href="#forms">Forms &amp; Inputs</a>
+            <a href="#semantic">Semantic Layout</a>
+            <a href="#seo">Head &amp; Meta</a>
+            <a href="#practice">Practice</a>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <!-- INTRO -->
+        <section id="intro" class="card">
+            <h2>🟠 1. What is HTML?</h2>
+            <p><b>HTML</b> stands for <b>HyperText Markup Language</b>. It is not a programming language with variables or loops; rather, it is a <b>markup language</b> that defines the architecture, content, and meaning of web documents.</p>
+
+            <div class="tip">
+                <b>💡 Core Principle:</b> HTML tells the browser <i>what</i> the content is (a heading, a paragraph, a form, an image), while CSS controls <i>how it looks</i>, and JavaScript controls <i>how it behaves</i>.
+            </div>
+
+            <div class="two">
+                <div class="mini">
+                    <h4>Elements &amp; Tags</h4>
+                    <p>An HTML element starts with an opening tag <code>&lt;p&gt;</code>, contains content, and terminates with a closing tag <code>&lt;/p&gt;</code>.</p>
+                    <pre><code>&lt;p&gt;This is a paragraph.&lt;/p&gt;</code></pre>
+                </div>
+                <div class="mini">
+                    <h4>Attributes</h4>
+                    <p>Attributes provide extra metadata or settings to elements, placed in the opening tag as <code>name="value"</code>.</p>
+                    <pre><code>&lt;a href="https://example.com" target="_blank"&gt;Visit&lt;/a&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOILERPLATE -->
+        <section id="boilerplate" class="card">
+            <h2>🟠 2. The Modern HTML5 Boilerplate</h2>
+            <p>Every standard HTML document begins with a standardized document scaffold. Here is the canonical boilerplate used across the web:</p>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;My First Website&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello, world!&lt;/h1&gt;
+    &lt;p&gt;Welcome to my web page.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+            <div class="important">
+                <b>Key Directives:</b>
+                <ul>
+                    <li><code>&lt;!DOCTYPE html&gt;</code>: Informs browsers to render in standards mode using the HTML5 specification.</li>
+                    <li><code>&lt;meta charset="UTF-8"&gt;</code>: Ensures support for all international characters, emojis, and symbols.</li>
+                    <li><code>&lt;meta name="viewport" ...&gt;</code>: Essential for responsive design on mobile screens and tablets.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TEXT & HEADINGS -->
+        <section id="text" class="card">
+            <h2>🟠 3. Text Formatting &amp; Typography</h2>
+            <p>Structuring text properly allows screen readers and search engines to index your content logically.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Purpose</th>
+                        <th>Semantic Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code></td>
+                        <td>Headings</td>
+                        <td><code>&lt;h1&gt;</code> is the primary title (use only one per page). <code>&lt;h2&gt;</code>-<code>&lt;h6&gt;</code> denote subsections.</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;p&gt;</code></td>
+                        <td>Paragraph</td>
+                        <td>Wraps a block of running prose.</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;strong&gt;</code></td>
+                        <td>Strong Importance</td>
+                        <td>Semantically indicates high importance or urgency (typically renders bold).</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;em&gt;</code></td>
+                        <td>Emphasis</td>
+                        <td>Stresses emphasis in spoken words (typically renders italic).</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;blockquote&gt;</code></td>
+                        <td>Quotation</td>
+                        <td>Denotes a long citation or quoted section from an external source.</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;code&gt;</code> &amp; <code>&lt;pre&gt;</code></td>
+                        <td>Code &amp; Preformatted</td>
+                        <td>Monospace text; <code>&lt;pre&gt;</code> preserves line breaks and spaces verbatim.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- IMAGES & MEDIA -->
+        <section id="media" class="card">
+            <h2>🟠 4. Images &amp; Media Elements</h2>
+            <p>Images are self-closing void elements. They require the <code>src</code> attribute to point to the resource and the <code>alt</code> attribute for accessibility and fallback description.</p>
+
+            <pre><code>&lt;!-- Basic Image with Alt Description --&gt;
+&lt;img src="hero-banner.webp" alt="Developers collaborating around a workstation" width="800" height="400" loading="lazy"&gt;
+
+&lt;!-- Figure with Caption --&gt;
+&lt;figure&gt;
+    &lt;img src="chart.svg" alt="Year-over-year developer growth graph"&gt;
+    &lt;figcaption&gt;Figure 1: Global developer community statistics in 2026.&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+
+            <div class="tip">
+                <b>🚀 2026 Best Practice:</b> Always include <code>loading="lazy"</code> on below-the-fold images to optimize initial page loading speeds and Core Web Vitals.
+            </div>
+        </section>
+
+        <!-- LINKS & NAV -->
+        <section id="links" class="card">
+            <h2>🟠 5. Hyperlinks &amp; Site Navigation</h2>
+            <p>Links are created with the anchor tag <code>&lt;a&gt;</code>. They can route to external URLs, local files, page anchors, email addresses, or phone numbers.</p>
+
+            <div class="two">
+                <div class="mini">
+                    <h4>Internal &amp; External Links</h4>
+                    <pre><code>&lt;!-- Relative link to lesson --&gt;
+&lt;a href="../index.html"&gt;Return Home&lt;/a&gt;
+
+&lt;!-- External secure link --&gt;
+&lt;a href="https://w3.org" target="_blank" rel="noopener noreferrer"&gt;
+    W3C Standards
+&lt;/a&gt;</code></pre>
+                </div>
+                <div class="mini">
+                    <h4>Anchor Links &amp; Actions</h4>
+                    <pre><code>&lt;!-- Jump to element with id="forms" --&gt;
+&lt;a href="#forms"&gt;Jump to Forms&lt;/a&gt;
+
+&lt;!-- Email / Telephone trigger --&gt;
+&lt;a href="mailto:team@codepath.org"&gt;Contact&lt;/a&gt;
+&lt;a href="tel:+18005550199"&gt;Call Us&lt;/a&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- LISTS & TABLES -->
+        <section id="tables" class="card">
+            <h2>🟠 6. Lists and Tables</h2>
+            <div class="two">
+                <div>
+                    <h3>Lists</h3>
+                    <p>Unordered (bulleted) with <code>&lt;ul&gt;</code> or ordered (numbered) with <code>&lt;ol&gt;</code>:</p>
+                    <pre><code>&lt;ul&gt;
+    &lt;li&gt;Semantic markup&lt;/li&gt;
+    &lt;li&gt;Cascading styles&lt;/li&gt;
+    &lt;li&gt;Dynamic scripting&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                </div>
+                <div>
+                    <h3>Structured Tables</h3>
+                    <p>Use <code>&lt;table&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tr&gt;</code>, and <code>&lt;td&gt;</code>:</p>
+                    <pre><code>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Language&lt;/th&gt;&lt;th&gt;Role&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;HTML5&lt;/td&gt;&lt;td&gt;Structure&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMS -->
+        <section id="forms" class="card">
+            <h2>🟠 7. Interactive Forms &amp; Inputs</h2>
+            <p>Forms gather user input and submit it to a server. Always associate an <code>&lt;input&gt;</code> with a <code>&lt;label&gt;</code> using matching <code>id</code> and <code>for</code> attributes.</p>
+
+            <pre><code>&lt;form action="/submit-lead" method="POST"&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label for="username"&gt;Full Name:&lt;/label&gt;
+        &lt;input type="text" id="username" name="name" placeholder="Amara Chen" required&gt;
+    &lt;/div&gt;
+
+    &lt;div class="form-group"&gt;
+        &lt;label for="email"&gt;Work Email:&lt;/label&gt;
+        &lt;input type="email" id="email" name="email" required&gt;
+    &lt;/div&gt;
+
+    &lt;div class="form-group"&gt;
+        &lt;label for="track"&gt;Learning Track:&lt;/label&gt;
+        &lt;select id="track" name="track"&gt;
+            &lt;option value="web"&gt;Web Development&lt;/option&gt;
+            &lt;option value="mobile"&gt;Mobile Apps&lt;/option&gt;
+            &lt;option value="backend"&gt;Backend &amp; Databases&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/div&gt;
+
+    &lt;button type="submit"&gt;Enroll Now&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </section>
+
+        <!-- SEMANTIC LAYOUT -->
+        <section id="semantic" class="card">
+            <h2>🟠 8. Semantic Layout Elements (HTML5)</h2>
+            <p>Avoid the trap of "div soup" (wrapping everything in uninformative <code>&lt;div&gt;</code> containers). Modern HTML provides semantic landmark tags that give immediate architectural meaning:</p>
+
+            <div class="three">
+                <div class="mini">
+                    <h4><code>&lt;header&gt; &amp; &lt;nav&gt;</code></h4>
+                    <p>Header holds page branding, search, and introductory content. Nav wraps top-level navigation links.</p>
+                </div>
+                <div class="mini">
+                    <h4><code>&lt;main&gt; &amp; &lt;section&gt;</code></h4>
+                    <p>Main is the unique central content of the document. Section groups thematic related material.</p>
+                </div>
+                <div class="mini">
+                    <h4><code>&lt;article&gt; &amp; &lt;footer&gt;</code></h4>
+                    <p>Article represents a standalone piece of content (blog, card). Footer houses legal, copyright, and secondary links.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HEAD & SEO -->
+        <section id="seo" class="card">
+            <h2>🟠 9. Metadata, Head, &amp; Search Engine Optimization</h2>
+            <p>The <code>&lt;head&gt;</code> section communicates directly with browsers, search crawlers, and social media share bots.</p>
+
+            <pre><code>&lt;!-- Page Title (Crucial for SEO) --&gt;
+&lt;title&gt;Learn HTML5 &amp; CSS3 — CodePath Interactive Course&lt;/title&gt;
+
+&lt;!-- Meta Description for Search Engine Snippets --&gt;
+&lt;meta name="description" content="Step-by-step master class on HTML5 semantic architecture and modern web standards."&gt;
+
+&lt;!-- OpenGraph tags for rich social media cards --&gt;
+&lt;meta property="og:title" content="HTML5 for Beginners"&gt;
+&lt;meta property="og:image" content="https://example.com/preview.png"&gt;
+&lt;meta property="og:type" content="article"&gt;</code></pre>
+        </section>
+
+        <!-- PRACTICE & CHECKLIST -->
+        <section id="practice" class="card">
+            <h2>🟠 10. Self-Check &amp; Practice Checklist</h2>
+            <p>Test your understanding of modern HTML5 before moving on to CSS:</p>
+
+            <ul class="checklist">
+                <li><span>☑</span> I understand the difference between HTML, CSS, and JavaScript.</li>
+                <li><span>☑</span> I can build an HTML5 boilerplate from memory.</li>
+                <li><span>☑</span> I know why there should only be one <code>&lt;h1&gt;</code> on a page.</li>
+                <li><span>☑</span> I always include <code>alt</code> attributes on <code>&lt;img&gt;</code> tags.</li>
+                <li><span>☑</span> I know how to connect form inputs with matching labels.</li>
+                <li><span>☑</span> I can build responsive layouts with semantic tags (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>).</li>
+                <li><span>☑</span> I can link multiple HTML documents using relative file paths.</li>
+            </ul>
+
+            <div style="margin-top: 24px; text-align: center;">
+                <a href="css.html" class="nav-home-btn" style="background: #e65100; font-size: 1rem; padding: 12px 24px;">Next Lecture: Continue to CSS3 →</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p style="margin-bottom: 12px;">
+            <a href="../index.html" style="color: var(--theme-primary); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Return to CodePath All Languages Hub
+            </a>
+        </p>
+        <p><b>🌐 HTML5 Master Lecture</b></p>
+        <p class="small">Part of the CodePath 2026 Web &amp; Mobile curriculum.</p>
+    </footer>
+
+</body>
+
+</html>

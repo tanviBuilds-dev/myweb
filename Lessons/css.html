@@ -1,1 +1,389 @@
-js.
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern CSS3 — Full In-Depth Lecture</title>
+    <link rel="stylesheet" href="lesson.css">
+    <style>
+        :root {
+            --theme-primary: #512da8;
+            --theme-dark: #311b92;
+            --theme-light: #ede7f6;
+            --theme-pale: #f8f6fc;
+            --border: #d1c4e9;
+            --code-border: #281559;
+        }
+
+        header {
+            background: linear-gradient(135deg, #311b92, #673ab7, #9575cd);
+        }
+
+        .visual-demo {
+            border: 2px solid var(--border);
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 14px 0;
+        }
+
+        .flex-demo-box {
+            display: flex;
+            gap: 12px;
+            justify-content: space-around;
+            padding: 14px;
+            background: var(--theme-light);
+            border-radius: 8px;
+        }
+
+        .flex-demo-item {
+            background: var(--theme-primary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .grid-demo-box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            background: var(--theme-light);
+            padding: 14px;
+            border-radius: 8px;
+        }
+
+        .grid-demo-item {
+            background: var(--theme-dark);
+            color: white;
+            padding: 14px;
+            text-align: center;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-top">
+            <a href="../index.html" class="header-back-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to CodePath Hub
+            </a>
+            <span class="badge">🎨 Modern CSS3 • Complete Master Class</span>
+        </div>
+        <h1>Modern CSS3 for Beginners</h1>
+        <p>Turn raw HTML into stunning, responsive, and animated user experiences. Master the Box Model, Flexbox, CSS Grid, custom properties (CSS variables), and modern responsive layout techniques.</p>
+    </header>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-home-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                CodePath Hub
+            </a>
+            <span class="nav-divider"></span>
+            <a href="#intro">Intro</a>
+            <a href="#selectors">Selectors</a>
+            <a href="#boxmodel">Box Model</a>
+            <a href="#colors">Colors &amp; Fonts</a>
+            <a href="#flexbox">Flexbox</a>
+            <a href="#grid">CSS Grid</a>
+            <a href="#responsive">Responsive &amp; Media Queries</a>
+            <a href="#variables">CSS Variables</a>
+            <a href="#animations">Transitions &amp; Anim</a>
+            <a href="#practice">Practice</a>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <!-- INTRO -->
+        <section id="intro" class="card">
+            <h2>🟣 1. What is CSS?</h2>
+            <p><b>CSS</b> stands for <b>Cascading Style Sheets</b>. It dictates how HTML elements are projected onto screen, print, or other media.</p>
+
+            <div class="tip">
+                <b>Cascade &amp; Specificity:</b> When multiple rules target the same element, CSS determines which style wins using inheritance, source order, and selector specificity (IDs beat classes, classes beat tag selectors).
+            </div>
+
+            <pre><code>/* Basic CSS Syntax Structure */
+selector {
+    property: value;
+    another-property: value;
+}
+
+/* Example: Modern Card */
+.feature-card {
+    background-color: #ffffff;
+    color: #1a202c;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}</code></pre>
+        </section>
+
+        <!-- SELECTORS -->
+        <section id="selectors" class="card">
+            <h2>🟣 2. Selectors and Combinators</h2>
+            <p>CSS provides multiple ways to pinpoint exactly which elements to style:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Selector</th>
+                        <th>Example</th>
+                        <th>Matches</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Element (Type)</td>
+                        <td><code>p { ... }</code></td>
+                        <td>Every <code>&lt;p&gt;</code> element on the page</td>
+                    </tr>
+                    <tr>
+                        <td>Class</td>
+                        <td><code>.btn-primary { ... }</code></td>
+                        <td>Elements with <code>class="btn-primary"</code></td>
+                    </tr>
+                    <tr>
+                        <td>ID</td>
+                        <td><code>#mainHeader { ... }</code></td>
+                        <td>The unique element with <code>id="mainHeader"</code></td>
+                    </tr>
+                    <tr>
+                        <td>Descendant</td>
+                        <td><code>nav a { ... }</code></td>
+                        <td>Any link nested anywhere inside a <code>&lt;nav&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td>Direct Child</td>
+                        <td><code>ul &gt; li { ... }</code></td>
+                        <td>Only immediate <code>&lt;li&gt;</code> children of <code>&lt;ul&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td>Pseudo-class</td>
+                        <td><code>button:hover</code>, <code>:focus</code></td>
+                        <td>State changes like user hover or keyboard focus</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- BOX MODEL -->
+        <section id="boxmodel" class="card">
+            <h2>🟣 3. The CSS Box Model</h2>
+            <p>Every HTML element is considered a rectangular box consisting of four layers: <b>Content</b>, <b>Padding</b>, <b>Border</b>, and <b>Margin</b>.</p>
+
+            <div class="visual-demo">
+                <div style="background: #ffccbc; padding: 20px; border-radius: 8px; text-align: center;">
+                    <span style="font-weight: 700; color: #bf360c;">Margin (Outer space around the box)</span>
+                    <div style="background: #ffe0b2; padding: 18px; border: 3px solid #ff9800; border-radius: 6px; margin: 10px 0;">
+                        <span style="font-weight: 700; color: #e65100;">Border (Visual edge)</span>
+                        <div style="background: #c8e6c9; padding: 16px; border-radius: 4px; margin: 10px 0;">
+                            <span style="font-weight: 700; color: #2e7d32;">Padding (Inner breathing room)</span>
+                            <div style="background: #bbdefb; padding: 14px; border-radius: 4px; margin-top: 8px; font-weight: 700; color: #0d47a1;">
+                                Content (Text, Image, Video)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="important">
+                <b>⚡ Critical 2026 Reset:</b> Always apply <code>box-sizing: border-box</code> globally. This guarantees that padding and border are included inside the element's width, preventing layout overflow surprises!
+                <pre><code>*, *::before, *::after {
+    box-sizing: border-box;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- COLORS & FONTS -->
+        <section id="colors" class="card">
+            <h2>🟣 4. Modern Colors &amp; Typography</h2>
+            <p>CSS supports Hexadecimal, RGB, HSL, and modern wide-gamut formats like OKLCH.</p>
+
+            <div class="two">
+                <div class="mini">
+                    <h4>Color Definitions</h4>
+                    <pre><code>/* Hex */
+color: #673ab7;
+
+/* RGB with alpha transparency */
+background: rgba(103, 58, 183, 0.15);
+
+/* Modern HSL (Hue, Saturation, Lightness) */
+border-color: hsl(260, 60%, 50%);</code></pre>
+                </div>
+                <div class="mini">
+                    <h4>Modern Web Typography</h4>
+                    <pre><code>body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1rem;       /* 16px root */
+    line-height: 1.65;     /* optimal reading */
+    letter-spacing: -0.01em;
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- FLEXBOX -->
+        <section id="flexbox" class="card">
+            <h2>🟣 5. Flexbox (One-Dimensional Layout)</h2>
+            <p>Flexbox excels at laying out items in a single direction (row or column), distributing available space and aligning items effortlessly.</p>
+
+            <div class="visual-demo">
+                <p style="margin-bottom: 8px; font-weight: 600;">Interactive Demo Result (<code>display: flex; justify-content: space-around;</code>):</p>
+                <div class="flex-demo-box">
+                    <div class="flex-demo-item">Home</div>
+                    <div class="flex-demo-item">Lectures</div>
+                    <div class="flex-demo-item">Practice</div>
+                    <div class="flex-demo-item">Contact</div>
+                </div>
+            </div>
+
+            <pre><code>/* Standard Navigation Bar with Flexbox */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* push logo to left, links to right */
+    align-items: center;            /* vertically centered */
+    gap: 16px;
+    padding: 12px 24px;
+}</code></pre>
+        </section>
+
+        <!-- GRID -->
+        <section id="grid" class="card">
+            <h2>🟣 6. CSS Grid (Two-Dimensional Layout)</h2>
+            <p>CSS Grid enables simultaneous control over rows and columns. It is the premier layout system for dashboards, photo galleries, and multi-column article layouts.</p>
+
+            <div class="visual-demo">
+                <p style="margin-bottom: 8px; font-weight: 600;">Interactive Grid (<code>grid-template-columns: repeat(3, 1fr);</code>):</p>
+                <div class="grid-demo-box">
+                    <div class="grid-demo-item">1. Column A</div>
+                    <div class="grid-demo-item">2. Column B</div>
+                    <div class="grid-demo-item">3. Column C</div>
+                </div>
+            </div>
+
+            <pre><code>/* Auto-responsive card grid without media queries! */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}</code></pre>
+        </section>
+
+        <!-- RESPONSIVE -->
+        <section id="responsive" class="card">
+            <h2>🟣 7. Responsive Web Design &amp; Media Queries</h2>
+            <p>Media queries adapt your styling depending on screen size, orientation, or user preferences (such as dark mode and reduced motion).</p>
+
+            <pre><code>/* Mobile-First Baseline: Single column */
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tablet & Desktop: Switch to two columns */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* User accessibility preference: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}</code></pre>
+        </section>
+
+        <!-- VARIABLES -->
+        <section id="variables" class="card">
+            <h2>🟣 8. CSS Custom Properties (Variables)</h2>
+            <p>Custom properties let you declare variables in CSS and reuse them across your entire stylesheet. They can be updated on the fly with JavaScript or media queries!</p>
+
+            <pre><code>:root {
+    --primary: #512da8;
+    --accent: #ff4081;
+    --card-radius: 12px;
+}
+
+.card {
+    border-radius: var(--card-radius);
+    border: 1px solid var(--primary);
+}
+
+.button-accent {
+    background: var(--accent);
+}</code></pre>
+        </section>
+
+        <!-- ANIMATIONS -->
+        <section id="animations" class="card">
+            <h2>🟣 9. Transitions and Micro-Animations</h2>
+            <p>Polished micro-animations elevate modern web apps by delivering tactile feedback when users interact with buttons, cards, and navigation.</p>
+
+            <pre><code>/* Smooth Button Hover Lift */
+.interactive-btn {
+    background: #512da8;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.interactive-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(81, 45, 168, 0.35);
+}</code></pre>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="card">
+            <h2>🟣 10. Self-Check &amp; Practice Checklist</h2>
+            <p>Verify your CSS skills before building complete projects:</p>
+
+            <ul class="checklist">
+                <li><span>☑</span> I understand the difference between padding (inside) and margin (outside).</li>
+                <li><span>☑</span> I always set <code>box-sizing: border-box</code> in my global reset.</li>
+                <li><span>☑</span> I can create a responsive navbar using Flexbox.</li>
+                <li><span>☑</span> I know how to use CSS Grid for a multi-column card layout.</li>
+                <li><span>☑</span> I can write media queries to make pages look great on smartphones.</li>
+                <li><span>☑</span> I use CSS variables for unified color palettes and theme management.</li>
+                <li><span>☑</span> I can navigate between lectures and the CodePath main index.</li>
+            </ul>
+
+            <div style="margin-top: 24px; text-align: center; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="html.html" class="nav-home-btn" style="background: #e65100;">← Previous: HTML5 Lecture</a>
+                <a href="python.html" class="nav-home-btn" style="background: #1565c0;">Next: Python Lecture →</a>
+                <a href="../index.html" class="nav-home-btn" style="background: #311b92;">CodePath Home Hub ⌂</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p style="margin-bottom: 12px;">
+            <a href="../index.html" style="color: var(--theme-primary); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Return to CodePath All Languages Hub
+            </a>
+        </p>
+        <p><b>🎨 CSS3 Master Lecture</b></p>
+        <p class="small">Part of the CodePath 2026 Web &amp; Mobile curriculum.</p>
+    </footer>
+
+</body>
+
+</html>

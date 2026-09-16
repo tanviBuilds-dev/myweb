@@ -10,6 +10,10 @@ const LANGUAGES = [
     color: "#e2653e",
     tagline: "The structure and style underneath every website, native app webview, and email template.",
     why: "Frameworks change, but they all compile down to HTML and CSS eventually. Modern CSS (container queries, `:has()`, native nesting, `color-mix()`) has closed most of the gaps that used to require JavaScript or a preprocessor — knowing plain CSS well in 2026 means writing less code, not more.",
+    lessonLinks: [
+      { label: "HTML5 Master Lecture", url: "Lessons/html.html", icon: "🌐" },
+      { label: "CSS3 Styling Lecture", url: "Lessons/css.html", icon: "🎨" }
+    ],
     levels: {
       basic: {
         explain: "HTML describes structure using semantic elements — <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;button&gt;</code> — instead of generic <code>&lt;div&gt;</code>s wherever possible. CSS then styles that structure using selectors, the box model (margin, border, padding, content), and simple color/typography rules.",
@@ -409,6 +413,9 @@ function statusMessage(state: FormState): string {
     color: "#2f8f4e",
     tagline: "The most versatile general-purpose language — backend APIs, automation, and the backbone of AI tooling.",
     why: "Python consistently ranks as the most popular language overall in 2026 indexes, driven by AI/ML work, but it's also a serious choice for web backends (Django, FastAPI) that power both websites and the APIs mobile apps talk to. Readable syntax makes it a common first language too.",
+    lessonLinks: [
+      { label: "Python for Beginners (Full 13-Module Lecture)", url: "Lessons/python.html", icon: "🐍" }
+    ],
     levels: {
       basic: {
         explain: "Python uses indentation instead of braces to define code blocks. Core building blocks: variables, <code>if</code>/<code>for</code>/<code>while</code>, functions with <code>def</code>, and built-in collections like lists and dictionaries.",
@@ -1407,9 +1414,10 @@ LANGUAGES.forEach(lang => {
   card.style.setProperty('--card-color', lang.color);
   card.dataset.jump = lang.id;
   const tags = lang.tag.map(t => `<span class="chip ${t}">${t}</span>`).join(' ');
+  const lectureBadge = lang.lessonLinks ? `<span class="card-lecture-tag">📖 Full Lecture</span>` : '';
   card.innerHTML = `
     <div class="lang-card-top"><h3>${lang.name}</h3></div>
-    <div style="margin-bottom:8px; display:flex; gap:6px;">${tags}</div>
+    <div style="margin-bottom:8px; display:flex; gap:6px; flex-wrap:wrap; align-items:center;">${tags} ${lectureBadge}</div>
     <p>${lang.tagline}</p>`;
   cardGrid.appendChild(card);
 });
@@ -1443,6 +1451,25 @@ LANGUAGES.forEach(lang => {
     <p class="tagline">${lang.tagline}</p>
     <div class="callout"><strong>Why it matters in 2026:</strong> ${lang.why}</div>`;
   page.appendChild(header);
+
+  // Standalone full lecture banner
+  if (lang.lessonLinks && lang.lessonLinks.length > 0) {
+    const lectureBanner = el('div', 'lang-lecture-banner');
+    const actionBtns = lang.lessonLinks.map(l => 
+      `<a href="${l.url}" class="btn-lecture"><span>${l.icon}</span> ${l.label} ↗</a>`
+    ).join(' ');
+    lectureBanner.innerHTML = `
+      <div class="lang-lecture-banner-info">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <span class="badge-new">IN-DEPTH LECTURE</span>
+          <h4>Complete Step-by-Step Curriculum Available</h4>
+        </div>
+        <p>Looking for a complete multi-chapter lecture with dedicated syntax breakdowns, interactive checklists, and live demos?</p>
+      </div>
+      <div class="lang-lecture-actions">${actionBtns}</div>
+    `;
+    page.appendChild(lectureBanner);
+  }
 
   const tabsWrap = el('div', 'level-tabs');
   LEVELS.forEach(([key, label], i) => {
@@ -1535,7 +1562,7 @@ function showPage(id) {
 }
 showPage('home');
 
-document.querySelectorAll('.side-link').forEach(link => {
+document.querySelectorAll('.side-link[data-target]').forEach(link => {
   link.addEventListener('click', () => showPage(link.dataset.target));
 });
 document.querySelectorAll('[data-jump]').forEach(btn => {
