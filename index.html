@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodePath — Learn Web &amp; Mobile Languages</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css" class="css">
+
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="mark">&lt;/&gt;</div>
+    <div>
+      CodePath
+      <span class="sub">Web &amp; mobile languages, basic → advanced</span>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <span class="badge-2026">2026 EDITION</span>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <input class="side-search" id="sideSearch" type="text" placeholder="Search languages…">
+    <div class="side-group">
+      <div class="side-group-label">Start here</div>
+      <button class="side-link active" data-target="home"><span class="side-dot"></span>Home</button>
+      <button class="side-link" data-target="landscape"><span class="side-dot"></span>2026 Landscape</button>
+    </div>
+    <div class="side-group" id="groupFoundations">
+      <div class="side-group-label">Foundations</div>
+    </div>
+    <div class="side-group" id="groupWeb">
+      <div class="side-group-label">Web development</div>
+    </div>
+    <div class="side-group" id="groupMobile">
+      <div class="side-group-label">Mobile development</div>
+    </div>
+    <div class="side-group" id="groupBackend">
+      <div class="side-group-label">Frameworks &amp; databases</div>
+    </div>
+  </aside>
+
+  <main id="content">
+
+    <!-- HOME -->
+    <section class="page" id="page-home">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">Learn by building</p>
+          <h1>One roadmap from <span>hello world</span> to shipped app.</h1>
+          <p>Seven languages, three levels each, real code examples, and a practice task for every lesson — focused on what actually gets used to build websites and mobile apps in 2026.</p>
+          <div class="hero-ctas">
+            <button class="btn btn-primary" data-jump="javascript">Start with JavaScript</button>
+            <button class="btn btn-ghost" data-jump="landscape">See the 2026 landscape</button>
+          </div>
+        </div>
+        <div class="terminal">
+          <div class="terminal-bar"><span></span><span></span><span></span></div>
+          <div class="terminal-lang" id="heroLang">javascript</div>
+          <div class="terminal-code" id="heroCode"></div>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <h2>Pick a language</h2>
+        <p>Every language below has a Basic, Intermediate, and Advanced lesson — each with a working example and a task to try yourself.</p>
+      </div>
+      <div class="card-grid" id="langCardGrid"></div>
+    </section>
+
+    <!-- LANDSCAPE -->
+    <section class="page" id="page-landscape">
+      <div class="section-head">
+        <h2>The 2026 language landscape</h2>
+        <p>A quick map of which languages carry which parts of web and mobile development right now — useful for deciding what to learn first.</p>
+      </div>
+      <div class="callout">
+        <strong>Big picture:</strong> Python leads overall popularity indexes and AI/backend work, JavaScript still runs most of the web while TypeScript has become the default for anything built at team scale, and mobile splits between native (Swift for iOS, Kotlin for Android) and cross-platform (Dart/Flutter). HTML and CSS remain the one constant underneath all of it.
+      </div>
+      <div class="landscape-grid" id="landscapeGrid"></div>
+    </section>
+
+    <!-- LANGUAGE PAGES injected by JS -->
+    <div id="langPages"></div>
+
+  </main>
+</div>
+
+<footer>CodePath · a learning reference, not a substitute for the official docs · built for the 2026 web &amp; mobile track</footer>
+<script src ="index.js"></script>
+
+</body>
+</html>
